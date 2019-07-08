@@ -9,20 +9,63 @@
 Desde  6 Intentos hasta 10:”falta técnica”
 Más de 10 intentos: “afortunado en el amor!!”.*/
 
+var $guess = document.getElementById('numero');
+var $mostrar = document.getElementById('intentos');
 var numeroSecreto; 
-var contadorIntentos;
+var tries;
 
 function comenzar()
 {
-	//Genero el número RANDOM entre 1 y 100
-	 
-	
+	numeroSecreto = Math.floor(Math.random() * 100) + 1;
+  	tries = 0;
+  	$mostrar.value = tries;
+  	$guess.value = 0;
+	alert("Se generó un nuevo numero a adivinar");
 
 }
 
 function verificar()
 {
-	
+	var guess = parseInt($guess.value);
+	tries++;
+	$mostrar.value = tries;  
+
+	if (guess === numeroSecreto){
+
+		switch (tries) {
+			case 1:
+				alert("usted es un Psíquico");
+				break;
+			
+			case 2:
+				alert("Excelente percepción");
+				break;
+				
+			case 3:
+				alert("Esto es suerte");
+				break;	
+			
+			case 4:
+				alert("Excelente técnica");
+				break;
+				
+			case 5:
+				alert("Usted está en la media");
+				break;
+		}
+
+		if(tries > 5 && tries < 11){
+			alert("Falta técnica");
+		}
+
+		if(tries > 10){
+			alert("Afortunado en el amor!!");
+		}
+	}else if(guess > numeroSecreto){
+		alert("te pasaste crack");
+	  }else{
+		alert("cortina cortina, probá con un numero más grande");
+	}
 	
 
 }
